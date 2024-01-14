@@ -1,2 +1,3 @@
 # CatppuccinText
-create catppuccin-mocha theme typography
+Pull file from JsonTK
+Document
