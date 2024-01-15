@@ -46,6 +46,7 @@ The Python code utilizes the argparse library, allowing for various configuratio
 | ---- | ---- | ---- | ---- |
 | `--path` | `str` | path of generated image. | `"./Catppuccin-Banner.jpg"` |
 | `--text` | `str` | set content of the image. use newline character `\n` for multi-line text. | `"Catppuccin"` |
+| `--text-geometry` | `str` | set text position on the image using format `x,y`. the position would be automatically calculated if the value is not given. | `None` | 
 | `--flavour` | `str` | set catppuccin-flavour of the image. this will be background color of the image.  see available options [here](#catppuccin-flavours-and-colors).  | `"mocha"` |
 | `--font` | `str` | path to truetype text font. | `"./fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf"` |
 | `--font-size` | `int` | set size of the font. if the value is equal or smaller than 0, font size will automatically be `1//3` of image height. | `0` |
@@ -90,6 +91,7 @@ Each commands below creates Dark/Light theme images of the banner of this reposi
 
 ```bash
 $ python banner.py \
+    --text-geometry="40,20" \
     --path="./assets/Catppuccin-Banner-Dark.jpg" \
     --text="Catppuccin\nBanner" \
     --text-border="sapphire" \
@@ -103,6 +105,7 @@ $ python banner.py \
 
 ```bash
 $ python banner.py \
+    --text-geometry="40,20" \
     --path="./assets/Catppuccin-Banner-Light.jpg" \
     --text="Catppuccin\nBanner" \
     --text-border="lavender" \

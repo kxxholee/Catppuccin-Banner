@@ -28,8 +28,9 @@ color_choice = [
 
 parser = argparse.ArgumentParser(description="Catppuccin Typography")
 parser.add_argument("--path", type=str, default="./Catppuccin-Banner.jpg")
-parser.add_argument("--format", type=str, default=None) # save format of the image, let 'Image.save' guess by default
+parser.add_argument("--format", type=str, default=None) # save format of the image, let 'Image.save' guess image extension type
 parser.add_argument("--text", type=str, default="Catppuccin")
+parser.add_argument("--text-geometry", type=str, default=None)
 parser.add_argument("--flavour", type=str, default="mocha", choices=flavour_choice)
 parser.add_argument("--font", type=str, default="./fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf")
 parser.add_argument("--font-size", type=int, default=0) # negative or zero -> use default settings : 1//3 of image height
@@ -46,14 +47,16 @@ def get_flavour(flavour: str) -> Flavour:
     elif flavour == "mocha":        return Flavour.mocha()
     else:       raise ValueError("Invalid Catppuccin Flavour")
 
-def geometry(geometry: str) -> tuple[int, int]:
-    dim = geometry.split('x')
+def geometry(geometry: str, sep:str) -> tuple[int, int]:
+    if len(sep) > 1:
+        raise ValueError("Invallid separator")
+    dim = geometry.split(sep)
     return (int(dim[0]), int(dim[1]))
 
 def textposition(imgsz:tuple[int, int], text:str, fontsize:int, spacing:int=10) -> tuple[int, int]:
     lines = text.split('\n')
     height = (len(lines) - 1) * spacing + len(lines) * fontsize
-    return (spacing * 5, (imgsz[1] - height) // 2)
+    return (spacing + 30, (imgsz[1] - height) // 2)
 
 
 option = parser.parse_args()
@@ -61,25 +64,31 @@ option = parser.parse_args()
 savepath = option.path # str
 flavour = get_flavour(option.flavour)
 # -------------------- size --------------------
-image_W, image_H = geometry(option.image_size) # int, int
-fontsize_t = option.font_size if option.font_size > 0 else image_H // 3 # int
+image_W, image_H = geometry(option.image_size, 'x') # int, int
+fontsize = option.font_size if option.font_size > 0 else image_H // 3 # int
 # ---------------- text && font ----------------
 text = option.text.replace(r"\n", "\n") # str
-font = ImageFont.truetype(option.font, fontsize_t)
+font = ImageFont.truetype(option.font, fontsize)
 # ----- Border color && size configuration -----
 textborder_color = flavour.__dict__[option.text_border].rgb
 imgborder_color = flavour.__dict__[option.image_border].rgb
-textborder_size = option.text_border_size if option.text_border_size >= 0 else fontsize_t // 40 # int
-imgborder_size = option.image_border_size if option.image_border_size >= 0 else fontsize_t // 20 # int
+textborder_size = option.text_border_size if option.text_border_size >= 0 else fontsize // 40 # int
+imgborder_size = option.image_border_size if option.image_border_size >= 0 else fontsize // 20 # int
 # ------------------- Image --------------------
 image = Image.new("RGB", (image_W, image_H), color=flavour.base.rgb)
 canvas = ImageDraw.Draw(image)
 # --------------- text position ----------------
-text_X, text_Y = textposition(
-    imgsz=(image_W, image_H),
-    text=text,
-    fontsize=fontsize_t
-)
+text_X = None
+text_Y = None
+if option.text_geometry is None:
+    text_X, text_Y = textposition(
+        imgsz=(image_W, image_H),
+        text=text,
+        fontsize=fontsize
+    )
+else:
+    text_X, text_Y = geometry(option.text_geometry, ',')
+
 # -------------- Draw text border --------------
 if textborder_size > 0: # if size is 0, not drawing border
     for dx in range(-textborder_size, textborder_size + 1):
