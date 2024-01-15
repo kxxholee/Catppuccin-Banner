@@ -44,16 +44,16 @@ The Python code utilizes the argparse library, allowing for various configuratio
 
 | option | type | role | default value |
 | ---- | ---- | ---- | ---- |
-| `--path` | `str` | path of generated image. | `./Catppuccin-Banner.jpg` |
-| `--text` | `str` | set content of the image. | `Catppuccin` |
-| `--flavour` | `str` | set catppuccin-flavour of the image. this will be background color of the image.  see available options [here](#catppuccin-flavours-and-colors).  | `mocha` |
-| `--font` | `str` | path to truetype text font. | `./fonts/Firacode/static/FiraCode-Regular.ttf` |
-| `--font-size` | `int` | set size of the font. if the value is equal or smaller than 0, font size will automatically be 1//3 of image height. | `0` |
-| `--image-size` | `str` | set size of the image using format `[width]x[height]`. | `1600x600` |
-| `--text-border` | `str` | set color of text border. see available options [here](#catppuccin-flavours-and-colors). | `mauve` |
-| `--text-border-size` | `int` | set size of text border. if the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be 1//40 of font size. | `-1` |
-| `--image-border` | `str` | set color of image border. see available options [here](#catppuccin-flavours-and-colors). | `mauve` |
-| `--image-border-size` | `int` | set size of image border. If the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be 1//20 of font size. | `-1` |
+| `--path` | `str` | path of generated image. | `"./Catppuccin-Banner.jpg"` |
+| `--text` | `str` | set content of the image. use newline character `\n` for multi-line text. | `"Catppuccin"` |
+| `--flavour` | `str` | set catppuccin-flavour of the image. this will be background color of the image.  see available options [here](#catppuccin-flavours-and-colors).  | `"mocha"` |
+| `--font` | `str` | path to truetype text font. | `"./fonts/Firacode/static/FiraCode-Regular.ttf"` |
+| `--font-size` | `int` | set size of the font. if the value is equal or smaller than 0, font size will automatically be `1//3` of image height. | `0` |
+| `--image-size` | `str` | set size of the image using format `[width]x[height]`. | `"1600x600"` |
+| `--text-border` | `str` | set color of text border. see available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
+| `--text-border-size` | `int` | set size of text border. if the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be `1//40` of font size. | `-1` |
+| `--image-border` | `str` | set color of image border. see available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
+| `--image-border-size` | `int` | set size of image border. If the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be `1//20` of font size. | `-1` |
 
 ### Catppuccin Flavours and colors
 ```python

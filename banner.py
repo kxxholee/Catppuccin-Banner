@@ -2,10 +2,6 @@ from catppuccin import Flavour
 from PIL import Image, ImageDraw, ImageFont
 import argparse
 
-# pillow 10.1.0 
-# install catppuccin via https://github.com/catppuccin/python/tree/main?tab=readme-ov-file
-# change default font before making it public
-
 flavour_choice = [
     "latte",
     "frappe",
