@@ -27,7 +27,7 @@ color_choice = [
     "sky",
     "sapphire",
     "blue",
-    "labender"
+    "lavender"
 ]
 
 parser = argparse.ArgumentParser(description="Catppuccin Typography")
