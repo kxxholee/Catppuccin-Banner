@@ -31,7 +31,7 @@ color_choice = [
 ]
 
 parser = argparse.ArgumentParser(description="Catppuccin Typography")
-parser.add_argument("--path", type=str, default="Catppuccin-Banner.jpg")
+parser.add_argument("--path", type=str, default="./Catppuccin-Banner.jpg")
 parser.add_argument("--format", type=str, default=None) # save format of the image, let 'Image.save' guess by default
 parser.add_argument("--text", type=str, default="Catppuccin")
 parser.add_argument("--flavour", type=str, default="mocha", choices=flavour_choice)
