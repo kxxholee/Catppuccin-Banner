@@ -48,7 +48,7 @@ The Python code utilizes the argparse library, allowing for various configuratio
 | `--text` | `str` | set content of the image. use newline character `\n` for multi-line text. | `"Catppuccin"` |
 | `--text-geometry` | `str` | set text position on the image using format `x,y`. the position would be automatically calculated if the value is not given. | `None` | 
 | `--flavour` | `str` | set catppuccin-flavour of the image. this will be background color of the image.  see available options [here](#catppuccin-flavours-and-colors).  | `"mocha"` |
-| `--font` | `str` | path to truetype text font. | `"./fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf"` |
+| `--font` | `str` | path to truetype text font. | `$FONT_PATH` |
 | `--font-size` | `int` | set size of the font. if the value is equal or smaller than 0, font size will automatically be `1//3` of image height. | `0` |
 | `--image-size` | `str` | set size of the image using format `[width]x[height]`. | `"1600x600"` |
 | `--text-border` | `str` | set color of text border. see available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
