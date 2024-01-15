@@ -6,39 +6,56 @@
 
 ----------------------------------------------------
 
-### Installation
-1. install pillow v10.1.0 using `pip`
-    * install the latest version of Pillow
+### Requirements
+|  Library   | version |
+|------------|---------|
+|   `PIL`    |`>10.1.0`|
+|`catppuccin`|  `Any`  |
 
-    ```bash
-    $ python3 -m pip install --upgrade Pillow
-    ```
+install pillow using `pip`
 
-    * install specific version of Pillow
+* install the latest version of Pillow
 
-    ```bash
-    $ python3 -m pip install --upgrade Pillow=10.1.0
-    ```
+```bash
+$ python3 -m pip install --upgrade Pillow
+```
 
-    * see also : [Official Pillow Installation Guide](https://pillow.readthedocs.io/en/latest/installation.html#python-support)
+* install specific version of Pillow
 
-2. install catppuccin palette
-    * install catppuccin with `pip`
+```bash
+$ python3 -m pip install --upgrade Pillow=10.1.0
+```
 
-    ```bash
-    $ pip install catppuccin
-    ```
+* see also : [Official Pillow Installation Guide](https://pillow.readthedocs.io/en/latest/installation.html#python-support)
 
-    * see also : [Official Catppuccin Palette](https://github.com/catppuccin/python/tree/main?tab=readme-ov-file)
+install catppuccin palette using `pip`
 
-3. clone this repository
-    
-    ```bash
-    $ git clone https://github.com/vanillaPenguin/Catppuccin-Banner.git
-    ```
+* install catppuccin with `pip`
+
+```bash
+$ pip install catppuccin
+```
+
+* see also : [Official Catppuccin Palette](https://github.com/catppuccin/python/tree/main?tab=readme-ov-file)
 
 ### Usage
-The Python code utilizes the argparse library, allowing for various configurations of the image through the terminal. Each commands below creates Dark/Light theme images of [The banner for this repository](./assets/Catppuccin-Banner.jpg)
+The Python code utilizes the argparse library, allowing for various configurations of the image through the terminal. 
+
+
+| option | type | role | default value |
+| ---- | ---- | ---- | ---- |
+| `--path` | `str` | path of generated image. | `./Catppuccin-Banner.jpg` |
+| `--text` | `str` | set content of the image. | `Catppuccin` |
+| `--flavour` | `str` | set catppuccin-flavour of the image. see available options [here](#catppuccin-flavours-and-colors).  | `mocha` |
+| `--font` | `str` | path truetype text font. | `./fonts/Firacode/static/FiraCode-Regular.ttf` |
+| `--font-size` | `int` | set size of the font. if the value is equal or smaller than 0, font size will automatically be 1//3 of image height. | `0` |
+| `--image-size` | `str` | set size of the image using format `[width]x[height]`. | `1600x600` |
+| `--text-border` | `str` | set color of text border. see available options [here](#catppuccin-flavours-and-colors). | `mauve` |
+| `--text-border-size` | `int` | set size of text border. if the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be 1//40 of font size. | `-1` |
+| `--image-border` | `str` | set color of image border. see available options [here](#catppuccin-flavours-and-colors). | `mauve` |
+| `--image-border-size` | `int` | set size of image border. If the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be 1//20 of font size. | `-1` |
+
+Each commands below creates Dark/Light theme images of [The banner for this repository](./assets/Catppuccin-Banner.jpg)
 
 1. Dark theme banner
 

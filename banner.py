@@ -39,9 +39,9 @@ parser.add_argument("--font", type=str, default="./fonts/Firacode/static/FiraCod
 parser.add_argument("--font-size", type=int, default=0) # negative or zero -> use default settings : 1//3 of image height
 parser.add_argument("--image-size", type=str, default="1600x600")
 parser.add_argument("--text-border", type=str, default="mauve", choices=color_choice)
-parser.add_argument("--text-border-size", type=int, default=0) # negative value -> use default settings : 1//40 of font size
+parser.add_argument("--text-border-size", type=int, default=-1) # negative value -> use default settings : 1//40 of font size
 parser.add_argument("--image-border", type=str, default="mauve", choices=color_choice)
-parser.add_argument("--image-border-size", type=int, default=0) # negative value -> use default settings : 1//20 of font size
+parser.add_argument("--image-border-size", type=int, default=-1) # negative value -> use default settings : 1//20 of font size
 
 def get_flavour(flavour: str) -> Flavour:
     if   flavour == "latte":        return Flavour.latte()
