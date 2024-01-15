@@ -47,7 +47,7 @@ The Python code utilizes the argparse library, allowing for various configuratio
 | `--path` | `str` | path of generated image. | `"./Catppuccin-Banner.jpg"` |
 | `--text` | `str` | set content of the image. use newline character `\n` for multi-line text. | `"Catppuccin"` |
 | `--flavour` | `str` | set catppuccin-flavour of the image. this will be background color of the image.  see available options [here](#catppuccin-flavours-and-colors).  | `"mocha"` |
-| `--font` | `str` | path to truetype text font. | `"./fonts/Firacode/static/FiraCode-Regular.ttf"` |
+| `--font` | `str` | path to truetype text font. | `"./fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf"` |
 | `--font-size` | `int` | set size of the font. if the value is equal or smaller than 0, font size will automatically be `1//3` of image height. | `0` |
 | `--image-size` | `str` | set size of the image using format `[width]x[height]`. | `"1600x600"` |
 | `--text-border` | `str` | set color of text border. see available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
@@ -102,7 +102,7 @@ $ python banner.py \
 2. Light theme banner
 
 ```bash
-$ python banner.py
+$ python banner.py \
     --path="./assets/Catppuccin-Banner-Light.jpg" \
     --text="Catppuccin\nBanner" \
     --text-border="lavender" \

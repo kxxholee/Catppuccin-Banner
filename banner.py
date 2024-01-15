@@ -31,7 +31,7 @@ parser.add_argument("--path", type=str, default="./Catppuccin-Banner.jpg")
 parser.add_argument("--format", type=str, default=None) # save format of the image, let 'Image.save' guess by default
 parser.add_argument("--text", type=str, default="Catppuccin")
 parser.add_argument("--flavour", type=str, default="mocha", choices=flavour_choice)
-parser.add_argument("--font", type=str, default="./fonts/Firacode/static/FiraCode-Regular.ttf")
+parser.add_argument("--font", type=str, default="./fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf")
 parser.add_argument("--font-size", type=int, default=0) # negative or zero -> use default settings : 1//3 of image height
 parser.add_argument("--image-size", type=str, default="1600x600")
 parser.add_argument("--text-border", type=str, default="mauve", choices=color_choice)
