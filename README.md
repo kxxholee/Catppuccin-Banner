@@ -84,7 +84,7 @@ color_choice = [ # text-border &$ image-border color options
 
 ### Examples
 
-Each commands below creates Dark/Light theme images of [The banner for this repository](./assets/Catppuccin-Banner.jpg)
+Each commands below creates Dark/Light theme images of the banner of this repository. See results of [Mocha theme image](./assets/Catppuccin-Banner-Dark.jpg) and also [Latte theme image](./assets/Catppuccin-Banner-Light.jpg)
 
 1. Dark theme banner
 
