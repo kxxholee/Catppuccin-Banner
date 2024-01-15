@@ -55,7 +55,7 @@ The Python code utilizes the argparse library, allowing for various configuratio
 | `--image-border` | `str` | set color of image border. see available options [here](#catppuccin-flavours-and-colors). | `mauve` |
 | `--image-border-size` | `int` | set size of image border. If the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be 1//20 of font size. | `-1` |
 
-##### Catppuccin Flavours and colors
+### Catppuccin Flavours and colors
 ```python
 flavour_choice = [ # flavour options (background color)
     "latte",
@@ -81,6 +81,8 @@ color_choice = [ # text-border &$ image-border color options
     "lavender"
 ]
 ```
+
+### Examples
 
 Each commands below creates Dark/Light theme images of [The banner for this repository](./assets/Catppuccin-Banner.jpg)
 
