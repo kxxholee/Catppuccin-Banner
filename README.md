@@ -7,10 +7,10 @@
 ----------------------------------------------------
 
 ### Requirements
-|  Library   | version |
-|------------|---------|
-|   `PIL`    |`>10.1.0`|
-|`catppuccin`|  `Any`  |
+|  Library   |          version        |
+|------------|-------------------------|
+|   `PIL`    |`10.1.0` is what I used. |
+|`catppuccin`|           `Any`         |
 
 install pillow using `pip`
 
