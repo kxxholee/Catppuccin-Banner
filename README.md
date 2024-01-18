@@ -36,11 +36,11 @@ The Python code utilizes the argparse library, allowing for various configuratio
 | `--flavour` | `str` | Select catppuccin flavour (background color). Available options [here](#catppuccin-flavours-and-colors).  | `"mocha"` |
 | `--font` | `str` | Path to the TrueType text font. | `$FONT_PATH` |
 | `--font-size` | `int` | Font size. Automatically set to `1/3` of image height if ≤ 0. | `0` |
-| `--image-size` | `str` | set size of the image using format `[width]x[height]`. | `"1600x600"` |
-| `--text-border` | `str` | set color of text border. see available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
-| `--text-border-size` | `int` | set size of text border. if the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be `1//40` of font size. | `-1` |
-| `--image-border` | `str` | set color of image border. see available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
-| `--image-border-size` | `int` | set size of image border. If the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be `1//20` of font size. | `-1` |
+| `--image-size` | `str` | Image size in `[width]x[height]` format. | `"1600x600"` |
+| `--text-border` | `str` | Color of the text border. Available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
+| `--text-border-size` | `int` | Text border size. Automatically set to `1/40` of font size if < 0. | `-1` |
+| `--image-border` | `str` | Color of the image border. Available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
+| `--image-border-size` | `int` | Image border size. Automatically set to `1/20` of font size if < 0. | `-1` |
 
 ### Catppuccin Flavours and colors
 ```python
@@ -71,7 +71,7 @@ color_choice = [ # text-border &$ image-border color options
 
 ### Examples
 
-Each commands below creates Dark/Light theme images of the banner of this repository. See results of [Mocha theme image](./assets/Catppuccin-Banner-Dark.jpg) and also [Latte theme image](./assets/Catppuccin-Banner-Light.jpg)
+Below are commands to create Dark/Light theme banner images for this repository. Check out the [Mocha theme image](./assets/Catppuccin-Banner-Dark.jpg) and the [Latte theme image](./assets/Catppuccin-Banner-Light.jpg)
 
 1. Dark theme banner
 
@@ -102,5 +102,5 @@ $ python banner.py \
 ```
 
 ### LICENSE
-given default fonts are downloaded from [Google Open Source Fonts](https://fonts.google.com/).   
-Font licenses are under OFL.
+given default fonts are sourced from [Google Open Source Fonts](https://fonts.google.com/).   
+Fonts are licensed under OFL.
