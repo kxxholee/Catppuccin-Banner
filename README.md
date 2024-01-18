@@ -12,23 +12,7 @@
 |   `PIL`    |`10.1.0` is what I used. |
 |`catppuccin`|           `Any`         |
 
-install pillow using `pip`
-
-* install the latest version of Pillow
-
-```bash
-$ python3 -m pip install --upgrade Pillow
-```
-
-* install specific version of Pillow
-
-```bash
-$ python3 -m pip install --upgrade Pillow=10.1.0
-```
-
-* see also : [Official Pillow Installation Guide](https://pillow.readthedocs.io/en/latest/installation.html#python-support)
-
-install catppuccin palette using `pip`
+install requirements `pip`
 
 * install catppuccin with `pip`
 
@@ -36,7 +20,7 @@ install catppuccin palette using `pip`
 $ pip install catppuccin
 ```
 
-* see also : [Official Catppuccin Palette](https://github.com/catppuccin/python/tree/main?tab=readme-ov-file)
+* see also : [Official Catppuccin Palette](https://github.com/catppuccin/python/tree/main?tab=readme-ov-file) and [Official Pillow Installation Guide](https://pillow.readthedocs.io/en/latest/installation.html#python-support)
 
 ### Usage
 The Python code utilizes the argparse library, allowing for various configurations of the image through the terminal. 
