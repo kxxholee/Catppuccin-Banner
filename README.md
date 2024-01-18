@@ -9,7 +9,7 @@
 ### Requirements
 |  Library   |          version        |
 |------------|-------------------------|
-|   `PIL`    |`10.1.0` is what I used. |
+|   `PIL`    |   Recommended:`10.1.0`  |
 |`catppuccin`|           `Any`         |
 
 install requirements `pip`
@@ -20,7 +20,9 @@ install requirements `pip`
 $ pip install catppuccin
 ```
 
-* see also : [Official Catppuccin Palette](https://github.com/catppuccin/python/tree/main?tab=readme-ov-file) and [Official Pillow Installation Guide](https://pillow.readthedocs.io/en/latest/installation.html#python-support)
+Further resources : 
+* [Official Catppuccin Palette](https://github.com/catppuccin/python/tree/main?tab=readme-ov-file)
+* [Official Pillow Installation Guide](https://pillow.readthedocs.io/en/latest/installation.html#python-support)
 
 ### Usage
 The Python code utilizes the argparse library, allowing for various configurations of the image through the terminal. 
@@ -28,12 +30,12 @@ The Python code utilizes the argparse library, allowing for various configuratio
 
 | option | type | role | default value |
 | ---- | ---- | ---- | ---- |
-| `--path` | `str` | path of generated image. | `"./Catppuccin-Banner.jpg"` |
-| `--text` | `str` | set content of the image. use newline character `\n` for multi-line text. | `"Catppuccin"` |
-| `--text-geometry` | `str` | set text position on the image using format `x,y`. the position would be automatically calculated if the value is not given. | `None` | 
-| `--flavour` | `str` | set catppuccin-flavour of the image. this will be background color of the image.  see available options [here](#catppuccin-flavours-and-colors).  | `"mocha"` |
-| `--font` | `str` | path to truetype text font. | `$FONT_PATH` |
-| `--font-size` | `int` | set size of the font. if the value is equal or smaller than 0, font size will automatically be `1//3` of image height. | `0` |
+| `--path` | `str` | Path for saving the generated image. | `"./Catppuccin-Banner.jpg"` |
+| `--text` | `str` | Text content for the image. Use `\n` for multi-line text. | `"Catppuccin"` |
+| `--text-geometry` | `str` | Text position on the image in `x,y` format. Position is auto-calculated if not specified. | `None` | 
+| `--flavour` | `str` | Select catppuccin flavour (background color). Available options [here](#catppuccin-flavours-and-colors).  | `"mocha"` |
+| `--font` | `str` | Path to the TrueType text font. | `$FONT_PATH` |
+| `--font-size` | `int` | Font size. Automatically set to `1/3` of image height if ≤ 0. | `0` |
 | `--image-size` | `str` | set size of the image using format `[width]x[height]`. | `"1600x600"` |
 | `--text-border` | `str` | set color of text border. see available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
 | `--text-border-size` | `int` | set size of text border. if the value is 0, text border will not appear. if the value is smaller than 0, border size will automatically be `1//40` of font size. | `-1` |
