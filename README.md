@@ -43,35 +43,26 @@ The Python code utilizes the argparse library, allowing for various configuratio
 | `--image-border-size` | `int` | Image border size. Automatically set to `1/20` of font size if < 0. | `-1` |
 
 ### Catppuccin Flavours and colors
+
 ```python
-flavour_choice = [ # flavour options (background color)
-    "latte",
-    "frappe",
-    "macchiatto",
-    "mocha"
+flavour_choice = [
+    "latte", "frappe",
+    "macchiatto", "mocha",
 ]
 
-color_choice = [ # text-border &$ image-border color options
-    "rosewater",
-    "flamingo",
-    "pink",
-    "mauve",
-    "red",
-    "maroon",
-    "peach",
-    "yellow",
-    "green",
-    "teal",
-    "sky",
-    "sapphire",
-    "blue",
-    "lavender"
+color_choice = [
+    "rosewater", "flamingo", "pink", "mauve", "red",
+    "maroon", "peach", "yellow", "green", "teal",
+    "sky", "sapphire", "blue", "lavender", "text",
+    "subtext1", "subtext0", "overlay2", "overlay1",
+    "overlay0", "surface2", "surface1", "surface0",
+    "base", "mantle", "crust",
 ]
 ```
 
 ### Examples
 
-Below are commands to create Dark/Light theme banner images for this repository. Check out the [Mocha theme image](./assets/Catppuccin-Banner-Dark.jpg) and the [Latte theme image](./assets/Catppuccin-Banner-Light.jpg)
+Below are commands to create Dark/Light theme banner images for this repository. Check out the [Mocha theme image](./assets/Catppuccin-Banner-dark.png) and the [Latte theme image](./assets/Catppuccin-Banner-light.png)
 
 1. Dark theme banner
 
