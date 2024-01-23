@@ -2,8 +2,6 @@ from flavourlib import CatppuccinColor
 from PIL import Image, ImageDraw, ImageFont
 import argparse
 
-# require libraqm to use '--text-direction'
-
 parser = argparse.ArgumentParser(prog="banner.py", 
                                  description="Creates a banner image with Catppuccin color themes and customizable typography.")
 
