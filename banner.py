@@ -17,9 +17,9 @@ parser = argparse.ArgumentParser(prog="banner.py",
 parser.add_argument("--path",               type=str, default="Banner.png")
 parser.add_argument("--format",             type=str,                       help="Detect filetype if not specified.")
 parser.add_argument("--text",               type=str, default="Catppuccin")
-parser.add_argument("--text-geometry",      type=str, default=None,         help="Starting position of the text. Use default value if not specified, but this is not recommended.")
+parser.add_argument("--text-geometry",      type=str,                       help="Starting position of the text. Use default value if not specified, but this is not recommended.")
 parser.add_argument("--text-align",         type=str, default="left",       choices=["left", "center", "right"])
-parser.add_argument("--text-direction",     type=str, default=None,         choices=["ltr", "rtl", "ttb"])
+parser.add_argument("--text-direction",     type=str,                       choices=["ltr", "rtl", "ttb"])
 parser.add_argument("--flavour",            type=str, default="mocha",      help="4 Catppuccin Flavours are available. See Github README for available choices.")
 parser.add_argument("--base-image",         type=str,                       help="Select the background image. Use default image if not specified.")
 parser.add_argument("--font",               type=str, required=True,        help="Path to `.ttf` file.")
@@ -42,6 +42,12 @@ def parse_geometry(geometry:str, sep:str) -> tuple[int, int]:
 def textpos_calculate(imgsz:tuple[int, int]) -> tuple[int, int]:
     return (imgsz[0]//8, imgsz[1]//8)
 
+def mask_alpha(image_A: Image, image_B: Image) -> Image:
+    alpha_A = image_A.split()[3]
+    r, g, b, _ = image_B.split()
+    result = Image.merge("RGBA", (r, g, b, alpha_A))
+    return result
+
 
 option = parser.parse_args()
 # --------------- basic settings ---------------
@@ -60,8 +66,8 @@ imgborder_color = colorset.crgba(option.image_border_color)
 textborder_size = option.text_border_size if option.text_border_size >= 0 else fontsize // 40 # int
 imgborder_size = option.image_border_size if option.image_border_size >= 0 else fontsize // 20 # int
 # ------------------- Image --------------------
-image = Image.new("RGBA", (image_W, image_H), color=colorset.crgba("base")) if option.base_image is None else Image.open(option.base_image)
-canvas = ImageDraw.Draw(image)
+mask = Image.new("RGBA", (image_W, image_H), color=(0, 0, 0, 0))
+mask_canvas = ImageDraw.Draw(mask)
 # --------------- text position ----------------
 text_X = None
 text_Y = None
@@ -69,8 +75,38 @@ if option.text_geometry is None:
     text_X, text_Y = textpos_calculate(imgsz=(image_W, image_H))
 else:
     text_X, text_Y = parse_geometry(option.text_geometry, ',')
+# -------------- Draw mask rectangle -------------
+if option.image_border_radius is None:
+    mask_canvas.rectangle([(imgborder_size // 2, imgborder_size // 2), 
+                            (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
+                            width=imgborder_size,
+                            fill=(0, 0, 0, 255))
+else:
+    mask_canvas.rounded_rectangle([(imgborder_size // 2, imgborder_size // 2), 
+                            (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
+                            radius=option.image_border_radius, 
+                            width=imgborder_size,
+                            fill=(0, 0, 0, 255))        
+# ------------- Draw base image to mask ----------
+image = Image.new("RGBA", (image_W, image_H), color=colorset.crgba("base")) if option.base_image is None else Image.open(option.base_image).convert("RGBA")
+result = mask_alpha(mask, image)
+canvas = ImageDraw.Draw(result)
 
-# -------------- Draw text border --------------
+# --------------- Draw image border --------------
+if imgborder_size > 0:
+    if option.image_border_radius is None:
+        canvas.rectangle([(imgborder_size // 2, imgborder_size // 2), 
+                                (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
+                                outline=imgborder_color, 
+                                width=imgborder_size)
+    else:
+        canvas.rounded_rectangle([(imgborder_size // 2, imgborder_size // 2), 
+                                (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
+                                radius=option.image_border_radius, 
+                                outline=imgborder_color, 
+                                width=imgborder_size)    
+
+# ---------------- Draw text border --------------
 if textborder_size > 0: # if size is 0, not drawing border
     for dx in range(-textborder_size, textborder_size + 1):
         for dy in range(-textborder_size, textborder_size + 1):
@@ -78,19 +114,5 @@ if textborder_size > 0: # if size is 0, not drawing border
 # ----------------- write text -----------------
 canvas.text((text_X, text_Y), text, font=font, fill=text_color, align=option.text_align, direction=option.text_direction) # edit this part
 
-# -------------- Draw image border -------------
-if imgborder_size > 0:
-    if option.image_border_radius is None:
-        canvas.rectangle([(imgborder_size // 2, imgborder_size // 2), 
-                        (image.size[0] - imgborder_size // 2 - 1, image.size[1] - imgborder_size // 2 - 1)], 
-                        outline=imgborder_color, 
-                        width=imgborder_size)
-    else:
-        canvas.rounded_rectangle([(imgborder_size // 2, imgborder_size // 2), 
-                                (image.size[0] - imgborder_size // 2 - 1, image.size[1] - imgborder_size // 2 - 1)], 
-                                radius=option.image_border_radius, 
-                                outline=imgborder_color, 
-                                width=imgborder_size)        
-
 # ----------------- Save Image -----------------
-image.save(savepath, format=option.format)
+result.save(savepath, format=option.format)

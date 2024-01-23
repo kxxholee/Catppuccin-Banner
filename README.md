@@ -1,7 +1,7 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/Catppuccin-Banner-Dark.jpg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/Catppuccin-Banner-Light.jpg">
-  <img alt="Catppuccin-Banner" src="./assets/Catppuccin-Banner-Dark.jpg">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/Catppuccin-Banner-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/Catppuccin-Banner-light.png">
+  <img alt="Catppuccin-Banner" src="./assets/Catppuccin-Banner-dark.png">
 </picture>
 
 ----------------------------------------------------
@@ -76,29 +76,33 @@ Below are commands to create Dark/Light theme banner images for this repository.
 1. Dark theme banner
 
 ```bash
-$ python banner.py \
-    --text-geometry="40,20" \
-    --path="./assets/Catppuccin-Banner-Dark.jpg" \
-    --text="Catppuccin\nBanner" \
-    --text-border="sapphire" \
-    --image-border="lavender" \
-    --text-border-size=-1 \
-    --image-border-size=-1 \
-    --flavour="mocha"
+$ python banner.py \ 
+    --path="./assets/Catppuccin-Banner-dark.png" \ 
+    --text="Catppuccin\nBanner" \ 
+    --flavour=mocha \ 
+    --text-color=sky \ 
+    --text-border-color=text \ 
+    --image-border-color=lavender \ 
+    --font="./fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf" \ 
+    --image-border-radius=20 \ 
+    --text-align=left \ 
+    --text-geometry="40,40" 
 ```
 
 2. Light theme banner
 
 ```bash
-$ python banner.py \
-    --text-geometry="40,20" \
-    --path="./assets/Catppuccin-Banner-Light.jpg" \
+$ python banner.py\ 
+    --path="./assets/Catppuccin-Banner-light.png" \
     --text="Catppuccin\nBanner" \
-    --text-border="lavender" \
-    --image-border="sapphire" \
-    --text-border-size=-1 \
-    --image-border-size=-1 \
-    --flavour="latte"
+    --flavour=latte \
+    --text-color=lavender \
+    --text-border-color=text \
+    --image-border-color=sky \
+    --font="./fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf" \
+    --image-border-radius=20 \
+    --text-align=left \
+    --text-geometry="40,40"
 ```
 
 ### LICENSE
