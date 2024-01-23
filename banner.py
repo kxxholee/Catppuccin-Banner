@@ -68,15 +68,15 @@ else:
 # -------------- Draw mask rectangle -------------
 if option.image_border_radius is None:
     mask_canvas.rectangle([(imgborder_size // 2, imgborder_size // 2), 
-                            (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
-                            width=imgborder_size,
-                            fill=(0, 0, 0, 255))
+                                (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
+                                width=imgborder_size,
+                                fill=(0, 0, 0, 255))
 else:
     mask_canvas.rounded_rectangle([(imgborder_size // 2, imgborder_size // 2), 
-                            (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
-                            radius=option.image_border_radius, 
-                            width=imgborder_size,
-                            fill=(0, 0, 0, 255))        
+                                (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
+                                radius=option.image_border_radius, 
+                                width=imgborder_size,
+                                fill=(0, 0, 0, 255))        
 # ------------- Draw base image to mask ----------
 image = Image.new("RGBA", (image_W, image_H), color=colorset.crgba("base")) if option.base_image is None else Image.open(option.base_image).convert("RGBA")
 result = mask_alpha(mask, image)
