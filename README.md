@@ -29,19 +29,26 @@ Further resources :
 The Python code utilizes the argparse library, allowing for various configurations of the image through the terminal. 
 
 
-| option | type | role | default value |
-| ---- | ---- | ---- | ---- |
-| `--path` | `str` | Path for saving the generated image. | `"./Catppuccin-Banner.jpg"` |
-| `--text` | `str` | Text content for the image. Use `\n` for multi-line text. | `"Catppuccin"` |
-| `--text-geometry` | `str` | Text position on the image in `x,y` format. Position is auto-calculated if not specified. | `None` | 
-| `--flavour` | `str` | Select catppuccin flavour (background color). Available options [here](#catppuccin-flavours-and-colors).  | `"mocha"` |
-| `--font` | `str` | Path to the TrueType text font. | `$FONT_PATH` |
-| `--font-size` | `int` | Font size. Automatically set to `1/3` of image height if ≤ 0. | `0` |
-| `--image-size` | `str` | Image size in `[width]x[height]` format. | `"1600x600"` |
-| `--text-border` | `str` | Color of the text border. Available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
-| `--text-border-size` | `int` | Text border size. Automatically set to `1/40` of font size if < 0. | `-1` |
-| `--image-border` | `str` | Color of the image border. Available options [here](#catppuccin-flavours-and-colors). | `"mauve"` |
-| `--image-border-size` | `int` | Image border size. Automatically set to `1/20` of font size if < 0. | `-1` |
+| option                | type  | role                                                                                       | default value  |
+|-----------------------|-------|--------------------------------------------------------------------------------------------|----------------|
+| `--path`              | str   | Path to save the generated banner image.                                                   | "Banner.png"   |
+| `--format`            | str   | File format for the output image. Automatically detected if not specified.                 | None           |
+| `--text`              | str   | Text to be displayed on the banner.                                                        | "Catppuccin"   |
+| `--text-geometry`     | str   | Starting position (x,y) of the text on the banner.                                         | None           |
+| `--text-align`        | str   | Alignment of the text. Options: 'left', 'center', 'right'.                                 | "left"         |
+| `--text-direction`    | str   | Direction of the text. Requires libraqm. Options: 'ltr', 'rtl', 'ttb'.                     | None           |
+| `--flavour`           | str   | Catppuccin color theme. Options in Github README.                                         | "mocha"        |
+| `--base-image`        | str   | Path to a base image for the banner background.                                           | None           |
+| `--font`              | str   | Path to the '.ttf' font file for the text.                                                 | None (required)|
+| `--font-size`         | int   | Font size for the text. Automatically calculated if not specified.                         | 0              |
+| `--image-size`        | str   | Size of the banner image. Format: 'widthxheight'.                                          | "1600x600"     |
+| `--text-color`        | str   | Color of the text. Options in Github README.                                               | "text"         |
+| `--text-border-color` | str   | Color of the text border. Options in Github README.                                        | "mauve"        |
+| `--image-border-color`| str   | Color of the image border. Options in Github README.                                       | "mauve"        |
+| `--text-border-size`  | int   | Size of the text border. Automatically calculated if not specified or below 0.             | -1             |
+| `--image-border-size` | int   | Size of the image border. Automatically calculated if not specified or below 0.            | -1             |
+| `--image-border-radius`| int  | Radius of the image border corners. Rectangle is drawn if not specified.                   | None           |
+
 
 ### Catppuccin Flavours and colors
 
