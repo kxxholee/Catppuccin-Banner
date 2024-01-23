@@ -2,29 +2,27 @@ from flavourlib import CatppuccinColor
 from PIL import Image, ImageDraw, ImageFont
 import argparse
 
-# TODO: Add update from banner-demo.py : background-alpha option update and its description
-# TODO: Update mask_canvas.rectangle part
-
 parser = argparse.ArgumentParser(prog="banner.py", 
                                  description="Creates a banner image with Catppuccin color themes and customizable typography.")
 
-parser.add_argument("--path",                   type=str, default="Banner.png", help="Path to save the generated banner image. Default is 'Banner.png'.")
-parser.add_argument("--format",                 type=str,                       help="File format for the output image. Automatically detected from the file extension if not specified.")
-parser.add_argument("--text",                   type=str, default="Catppuccin", help="Text to be displayed on the banner. Default is 'Catppuccin'.")
-parser.add_argument("--text-geometry",          type=str,                       help="Specifies the starting position (x,y) of the text on the banner. Format: 'x,y'. If not specified, defaults to an automatically calculated position.")
-parser.add_argument("--text-align",             type=str, default="left",       choices=["left", "center", "right"], help="Alignment of the text. Choices are 'left', 'center', 'right'. Default is 'left'.")
-parser.add_argument("--text-direction",         type=str,                       choices=["ltr", "rtl", "ttb"], help="Direction of the text. Choices are 'ltr' (left-to-right), 'rtl' (right-to-left), 'ttb' (top-to-bottom). Requires libraqm to use this option.")
-parser.add_argument("--flavour",                type=str, default="mocha",      help="Catppuccin color theme. Choices are available in the Github README. Default is 'mocha'.")
-parser.add_argument("--base-image",             type=str,                       help="Path to a base image to be used as the banner background. If not specified, a solid color background is used.")
-parser.add_argument("--font",                   type=str, required=True,        help="Path to the '.ttf' font file to be used for the text.")
-parser.add_argument("--font-size",              type=int, default=0,            help="Font size for the text. If not specified, automatically calculated based on image height.")
-parser.add_argument("--image-size",             type=str, default="1600x600",   help="Size of the banner image. Format: 'widthxheight'. Default is '1600x600'.")
-parser.add_argument("--text-color",             type=str, default="text",       help="Color of the text. Choices are available in the Github README. Default is 'text'.")
-parser.add_argument("--text-border-color",      type=str, default="mauve",      help="Color of the text border. Choices are available in the Github README. Default is 'mauve'.")
-parser.add_argument("--image-border-color",     type=str, default="mauve",      help="Color of the image border. Choices are available in the Github README. Default is 'mauve'.")
-parser.add_argument("--text-border-size",       type=int, default=-1,           help="Size of the text border. If not specified or below 0, automatically calculated.")
-parser.add_argument("--image-border-size",      type=int, default=-1,           help="Size of the image border. If not specified or below 0, automatically calculated.")
-parser.add_argument("--image-border-radius",    type=int,                       help="Radius of the image border corners. If not specified, a rectangle is drawn.")
+parser.add_argument("--path",                   type=str,   default="Banner.png",   help="Path to save the generated banner image. Default is 'Banner.png'.")
+parser.add_argument("--format",                 type=str,                           help="File format for the output image. Automatically detected from the file extension if not specified.")
+parser.add_argument("--text",                   type=str,   default="Catppuccin",   help="Text to be displayed on the banner. Default is 'Catppuccin'.")
+parser.add_argument("--text-geometry",          type=str,                           help="Specifies the starting position (x,y) of the text on the banner. Format: 'x,y'. If not specified, defaults to an automatically calculated position.")
+parser.add_argument("--text-align",             type=str,   default="left",         choices=["left", "center", "right"], help="Alignment of the text. Choices are 'left', 'center', 'right'. Default is 'left'.")
+parser.add_argument("--text-direction",         type=str,                           choices=["ltr", "rtl", "ttb"], help="Direction of the text. Choices are 'ltr' (left-to-right), 'rtl' (right-to-left), 'ttb' (top-to-bottom). Requires libraqm to use this option.")
+parser.add_argument("--flavour",                type=str,   default="mocha",        help="Catppuccin color theme. Choices are available in the Github README. Default is 'mocha'.")
+parser.add_argument("--base-image",             type=str,                           help="Path to a base image to be used as the banner background. If not specified, a solid color background is used.")
+parser.add_argument("--font",                   type=str,   required=True,          help="Path to the '.ttf' font file to be used for the text.")
+parser.add_argument("--font-size",              type=int,   default=0,              help="Font size for the text. If not specified, automatically calculated based on image height.")
+parser.add_argument("--image-size",             type=str,   default="1600x600",     help="Size of the banner image. Format: 'widthxheight'. Default is '1600x600'.")
+parser.add_argument("--text-color",             type=str,   default="text",         help="Color of the text. Choices are available in the Github README. Default is 'text'.")
+parser.add_argument("--text-border-color",      type=str,   default="mauve",        help="Color of the text border. Choices are available in the Github README. Default is 'mauve'.")
+parser.add_argument("--image-border-color",     type=str,   default="mauve",        help="Color of the image border. Choices are available in the Github README. Default is 'mauve'.")
+parser.add_argument("--text-border-size",       type=int,   default=-1,             help="Size of the text border. If not specified or below 0, automatically calculated.")
+parser.add_argument("--image-border-size",      type=int,   default=-1,             help="Size of the image border. If not specified or below 0, automatically calculated.")
+parser.add_argument("--image-border-radius",    type=int,                           help="Radius of the image border corners. If not specified, a rectangle is drawn.")
+parser.add_argument("--background-alpha",             type=int,  default=255)
 
 def parse_geometry(geometry:str, sep:str) -> tuple[int, int]:
     if len(sep) > 1:
@@ -73,13 +71,13 @@ if option.image_border_radius is None:
     mask_canvas.rectangle([(imgborder_size // 2, imgborder_size // 2), 
                                 (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
                                 width=imgborder_size,
-                                fill=(0, 0, 0, 255))
+                                fill=(0, 0, 0, option.background_alpha))
 else:
     mask_canvas.rounded_rectangle([(imgborder_size // 2, imgborder_size // 2), 
                                 (mask.size[0] - imgborder_size // 2 - 1, mask.size[1] - imgborder_size // 2 - 1)], 
                                 radius=option.image_border_radius, 
                                 width=imgborder_size,
-                                fill=(0, 0, 0, 255))        
+                                fill=(0, 0, 0, option.background_alpha))        
 # ------------- Draw base image to mask ----------
 image = Image.new("RGBA", (image_W, image_H), color=colorset.crgba("base")) if option.base_image is None else Image.open(option.base_image).convert("RGBA")
 result = mask_alpha(mask, image)
