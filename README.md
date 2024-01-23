@@ -7,10 +7,11 @@
 ----------------------------------------------------
 
 ### Requirements
-|  Library   |          version        |
-|------------|-------------------------|
-|   `PIL`    |   Recommended:`10.1.0`  |
-|`catppuccin`|           `Any`         |
+|  Library   |          version        |     Required      |                 Purpose                |
+|------------|-------------------------|-------------------|----------------------------------------|
+|   `PIL`    |   Recommended:`10.1.0`  |        True       |             Image processing           |
+|`catppuccin`|           `Any`         |        True       |       Provide catppuccin palettes      |
+| `libraqm`  |           `Any`         |      Optional     |    To use `--text-direction` option    |
 
 install requirements `pip`
 
