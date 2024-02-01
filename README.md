@@ -29,26 +29,26 @@ Further resources :
 The Python code utilizes the argparse library, allowing for various configurations of the image through the terminal. 
 
 
-| Option            | Type   | Role                                                                        | Default Value   |
-|-------------------|--------|-----------------------------------------------------------------------------|-----------------|
-| `--path`          | str    | Path to save the generated banner image                                     | "Banner.png"    |
-| `--format`        | str    | File format for the output image                                            | (None)          |
-| `--text`          | str    | Text to be displayed on the banner                                          | "Catppuccin"    |
-| `--text-position` | str    | Starting position (x,y) of the text on the banner                           | (Auto)          |
-| `--text-align`    | str    | Alignment of the text                                                       | "left"          |
-| `--text-direction`| str    | Direction of the text                                                       | (None)          |
-| `--flavour`       | str    | Catppuccin color theme                                                      | "mocha"         |
-| `--base-image`    | str    | Path to a base image for the banner background                              | (None)          |
-| `--font`          | str    | Path to the '.ttf' font file for the text                                   | (Required)      |
-| `--font-size`     | int    | Font size for the text                                                      | 0 (Auto)        |
-| `--image-size`    | str    | Size of the banner image                                                    | "1600x600"      |
-| `--text-color`    | str    | Color of the text                                                           | "text"          |
-| `--text-bdr-color`| str    | Color of the text border                                                    | "mauve"         |
-| `--image-bdr-color`| str   | Color of the image border                                                   | "mauve"         |
-| `--text-bdr-size` | int    | Size of the text border                                                     | -1 (Auto)       |
-| `--image-bdr-size`| int    | Size of the image border                                                    | -1 (Auto)       |
-| `--image-bdr-radius`| int  | Radius of the image border corners                                          | (None)          |
-| `--bg-opacity`    | int    | Alpha (transparency) level of the background                                | 255             |
+| Option              | Type   | Role                                                                        | Default Value   |
+|---------------------|--------|-----------------------------------------------------------------------------|-----------------|
+| `--path`            | str    | Path to save the generated banner image                                     | "Banner.png"    |
+| `--format`          | str    | File format for the output image                                            | (None)          |
+| `--text`            | str    | Text to be displayed on the banner                                          | "Catppuccin"    |
+| `--text-position`   | str    | Starting position (x,y) of the text on the banner                           | (Auto)          |
+| `--text-align`      | str    | Alignment of the text                                                       | "left"          |
+| `--text-direction`  | str    | Direction of the text                                                       | (None)          |
+| `--flavour`         | str    | Catppuccin color theme                                                      | "mocha"         |
+| `--base-image`      | str    | Path to a base image for the banner background                              | (None)          |
+| `--font`            | str    | Path to the '.ttf' font file for the text                                   | (Required)      |
+| `--font-size`       | int    | Font size for the text                                                      | 0 (Auto)        |
+| `--image-size`      | str    | Size of the banner image                                                    | "1600x600"      |
+| `--text-color`      | str    | Color of the text                                                           | "text"          |
+| `--text-bdr-color`  | str    | Color of the text border                                                    | "mauve"         |
+| `--image-bdr-color` | str    | Color of the image border                                                   | "mauve"         |
+| `--text-bdr-size`   | int    | Size of the text border                                                     | -1 (Auto)       |
+| `--image-bdr-size`  | int    | Size of the image border                                                    | -1 (Auto)       |
+| `--image-bdr-radius`| int    | Radius of the image border corners                                          | (None)          |
+| `--bg-opacity`      | int    | Alpha (transparency) level of the background                                | 255             |
 
 
 ### Catppuccin Flavours and colors
